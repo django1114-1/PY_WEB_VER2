@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post List</title>
+    {% load staticfiles %}
+</head>
+
+<style>
+.box{
+    width:400px; height: auto;
+    border: 1px solid Lightgray;
+    display: inline-block;
+    }
+img {
+    width:380px; height:380px;
+    margin:auto; display:block;
+}
+</style>
+
+<body>
+<div id="content">
+    <h1>Blog made with Django</h1>
+
+    {% for post in object_list %}
+    <div class="box">
+        <p>{{post.title}}</p>
+        <img src="{{post.image.url}}">
+        <p>{{post.description}}</p>
+        <p>{{ post.create_date }}</p>
+        <p>{{ post.modify_date}}</p>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

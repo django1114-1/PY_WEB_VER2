@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    #title {
+    font-family: 'Gugi', cursive;
+    font-color:
+}
+</style>
+
+<body>
+<div id="content">
+    <h1 id="title">
+        자줒<span class="small">주보는</span>
+        유<span class="small">튜브</span>
+    </h1>
+
+    <ul>
+        {% for bookmark in object_list %}
+        <li> <a href="{% url 'detail' bookmark.id %}"> {{bookmark}}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+</body>
+</html>
