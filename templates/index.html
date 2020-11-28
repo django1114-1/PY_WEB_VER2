@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
 
     <style>
+
         .main_text{
             font-family: 'Source Code Pro', monospace;
             position: absolute;
@@ -56,6 +57,11 @@
             color: greenyellow;
         }
 
+        #auth1{
+            left: 50%;
+            top: 10%;
+        }
+
         #auth2{
             left:50%;
             top:10%;
@@ -86,10 +92,20 @@
         <li><a href="{% url 'blog_index' %}">BLOG</a></li>
     </ul>
 
-    <ul class="main_text" id="auth2">
-        <li><a class="auth_menu" href="#">SIGN IN</a></li>
-        <li><a class="auth_menu" href="{% url 'register' %}>SIGN UP</a></li>
+    {% if user.is_active %}
+
+    <ul class = "main_text" id = "auth1">
+        <p class="greet">Hello, <strong class="userID">{{ user.get_username }}</strong></p>
+        <li><a class = "auth_menu" href ="{% url 'logout' %}">SIGN OUT</a></li>
+        <li><a class = "auth_menu" href ="{% url 'password_change' %}">PW CHANGE</a></li>
     </ul>
 
+    {% else %}
+    <ul class = "main_text" id = "auth2">
+        <p class="greet">Welcome, <strong class="userID">Anonymous</strong></p>
+        <li><a class = "auth_menu" href ="{% url 'login' %}">SIGN IN</a></li>
+        <li><a class = "auth_menu" href ="{% url 'register' %}">SIGN UP</a></li>
+    </ul>
+    {% endif %}
 </body>
 </html>
